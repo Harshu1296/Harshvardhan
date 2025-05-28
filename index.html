@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Love Letter</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Cookie&family=Sacramento&family=Poppins:wght@300&family=Quicksand:wght@500&display=swap");
 
@@ -178,6 +180,28 @@
         }
         
       }
+
+
+        .pause{
+position: absolute;
+top: 15%;
+left: 50%;
+transform: translate(-50%,-50%);
+padding: 15px;
+/* color: #3a741d; */
+color: #19a148;
+font-size: 30px;
+background: rgba(255, 255, 255, 0.15);
+        border-radius: 25px;
+        backdrop-filter: blur(12px);
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        overflow-y: auto;
+
+        .fa-spotify{
+          color: #b90031;
+        }
+      }
     </style>
   </head>
   <body>
@@ -190,6 +214,11 @@
       <button class="next-button">Click Me ! <img height="200px" src="click me.png" alt=""></button>
     </div>
 
+<div class="pause fab fa-spotify" onclick="togglePlay()"></div>
+	
+		<audio class="audio" src="./mix_20s (audio-joiner.com).mp3" preload="auto" autoplay type="audio" loop=""></audio>
+
+    
     <div class="loading-hearts">
       <span>🐧</span>
       <span>🐧</span>
@@ -263,5 +292,22 @@
 
 
 <script></script>
+    <script>
+
+  var pause = document.querySelector(".pause");
+var audio = document.querySelector(".audio");
+
+function togglePlay() {
+	if (audio.paused) {
+		audio.play();
+		pause.innerHTML = " Love You 🐧 !!";
+    pause.style.color = "#b90031";
+	} else {
+		audio.pause();
+		pause.innerHTML = " Love You 🐧 !!";
+		pause.style.color = "#3a741d";
+	}
+}
+</script>
   </body>
 </html>
