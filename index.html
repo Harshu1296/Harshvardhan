@@ -190,7 +190,10 @@ left: 50%;
 transform: translate(-50%,-50%);
 padding: 15px;
 		 font-size: 30px;
-        
+        font-family: "Sacramento", cursive;
+      /* color: #3a741d; */
+      font-weight: 700;
+      text-wrap: wrap;
        
 /* color: #3a741d; */
 color: #19a148;
@@ -202,11 +205,17 @@ background: rgba(255, 255, 255, 0.15);
         border: 1px solid rgba(255, 255, 255, 0.4);
         overflow-y: auto;
 
-        .fa-spotify{
-          color: #b90031;
-        }
+        
       }
+.click-icon{
 
+                /* background: #fff; */
+              padding: 2px;
+              height: 60px;
+              border-radius: 50%;
+              cursor: pointer; transition: transform 0.2s ease;
+            
+              }
 .typo{
 /* 	// font-family: "Cookie", cursive; */
 }
@@ -222,7 +231,7 @@ background: rgba(255, 255, 255, 0.15);
       <button class="next-button">Click Me ! <img height="200px" src="click me.png" alt=""></button>
     </div>
 
-<div class="pause " onclick="togglePlay()"><img width="40"  src="https://img.icons8.com/fluency/48/airpods-3.png" alt="airpods-3"/></div>
+<div class="pause " onclick="togglePlay()"><img class="click-icon"  src="output-onlinegiftools.gif" alt="pugdy penguin"/></div>
 	
 		<audio class="audio" src="mix_20s (audio-joiner.com).mp3" preload="auto" autoplay type="audio" loop=""></audio>
 
