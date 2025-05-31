@@ -219,6 +219,145 @@ background: rgba(255, 255, 255, 0.15);
 .typo{
 /* 	// font-family: "Cookie", cursive; */
 }
+
+/* 	     gift box code  */
+	    #app{
+    width: 100%;
+    position: absolute;
+    top: -80%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+}
+.gift {
+  position: relative;
+  width: 30px;
+  height: 20px;
+  cursor: pointer;
+  transition: 1s;
+  margin: 1em 0;
+  padding: 1em 10%;
+  display: inline-block;
+  z-index: 10;
+/*   animation: dukdik 0.5s infinite; */
+}
+.gift:hover{
+  cursor: pointer;
+  transform: translateY(0);
+  animation: wiggle 2s 5; 
+}
+.gift-top {
+  position: relative;
+  width: 32px;
+  height: 14px;
+  background: #DC453D;
+  border-radius: 5px 5px 0 0;
+  transform: translate3d(-5%, 0, 0);
+  background-image: linear-gradient(to right, #DC453D 0%, #DC453D 44%, #FFB447 44%, #FFB447 56%, #DC453D 56%, #DC453D 100%);
+  transition: 1s;
+}
+.gift-top.boxOpen{
+  animation: box-open 1s;
+  opacity:0;
+}
+@keyframes box-open{
+  0%{
+    top:0px;
+    opacity:1;
+  }
+  100%{
+    top:-50px;
+    opacity:0;
+  }
+}
+.gift-top::before,
+.gift-top::after {
+    content: "";
+    width: 15px;
+    height: 15px;
+    border: 10px solid #FFB447;
+    border-radius: 50% 50% 0 50%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate3d(-100%, -100%, 0) skew(10deg, 10deg);
+}
+
+.gift-top::after {
+  border-radius: 50% 50% 50% 0;
+  transform: translate3d(0, -100%, 0) skew(-10deg, -10deg);
+}
+
+
+.gift-box {
+  width: 100%;
+  height: 75%;
+  position:relative;
+  background-image: linear-gradient(to right, #C33C23 0%, #C33C23 45%, #FFB447 45%, #FFB447 55%, #C33C23  55%, #C33C23 100%);
+  border-radius: 0 0 5px 5px;
+  transition: 1s;
+}
+.gift-box.boxDown{
+  animation: box-down 1s; 
+   opacity:0; 
+}
+.title-text{
+    text-align: center;
+    font-size: 4vw;
+    color: #4C4C53;
+    position:absolute;
+    top: 20%;
+    left: 0;
+    width: 100%;
+}
+@keyframes box-down{
+  0%{
+    top:0px;
+    opacity:1;
+  }
+  100%{
+    top:50px;
+    opacity:0;
+  }  
+}
+@keyframes wiggle {
+  10% {
+    transform: rotate(7deg) translateY(0px);
+  }
+  
+  20% {
+    transform: rotate(-14deg)translateY(0px);
+  }
+  
+  30% {
+    transform: rotate(4deg)translateY(0px);
+  }
+  
+  40% {
+    transform: rotate(-2deg)translateY(0px);
+  }
+  
+  50% {
+    transform: rotate(0deg) translateY(0px);
+  }  
+  70% {
+    transform: rotate(0deg)translateY(10px);
+  }
+  
+  80% {
+    transform: rotate(0deg)translateY(-30px);
+  }
+  
+  90% {
+    transform: rotate(0deg)translateY(-5px);
+  }
+  
+  100% {
+    transform: rotate(0deg) translateY(0px);
+  }
+}
+	    
     </style>
   </head>
   <body>
@@ -231,7 +370,17 @@ background: rgba(255, 255, 255, 0.15);
       <button class="next-button">Click Me ! <img height="200px" src="click me.png" alt=""></button>
     </div>
 
-<div class="pause " onclick="togglePlay()"><img class="click-icon"  src="output-onlinegiftools.gif" alt="pugdy penguin"/></div>
+<div class="pause " onclick="togglePlay()">
+<!-- 	<img class="click-icon"  src="output-onlinegiftools.gif" alt="pugdy penguin"/> -->
+
+<div id="app">
+        <div class="gift">
+          <div class="gift-top"></div>
+          <div class="gift-box"></div>
+        </div>
+      </div>
+
+</div>
 	
 		<audio class="audio" src="mix_20s (audio-joiner.com).mp3" preload="auto" autoplay type="audio" loop=""></audio>
 
@@ -326,5 +475,19 @@ function togglePlay() {
 	}
 }
 </script>
+
+	   <!-- gift box  -->
+    <script>
+      $(function () {
+        // $('.gift').clickFireworks({
+        //     id: 'fireworks', // canvas id
+        //     appendTo: 'body', // append canvas to where, default is body
+        //     zIndex: 2 // canvas z-index, make it higher than anything on the page
+        // });
+        $(".gift").click(function () {
+          $(this).find(".gift-top").addClass("boxOpen");
+        });
+      });
+    </script>
   </body>
 </html>
