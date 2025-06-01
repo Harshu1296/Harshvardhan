@@ -144,6 +144,37 @@
         z-index: 2;
       }
 
+          .falling-img{
+        position: fixed;
+        
+        right: -150px;
+         transform: rotateZ(0deg);
+        bottom: 0px;
+        z-index: 1;
+        transition: all 1s;
+      }
+
+      .falling-img {
+     
+     
+      animation: rotateEveryMinute 20s linear infinite;
+      transition: transform 1s ease; /* optional smoothness */
+    }
+
+    @keyframes rotateEveryMinute {
+      0% {
+        transform: rotateZ(0deg);
+        transition: all 1s;
+      }
+      20% {
+        transform: rotateZ(3deg);
+      }
+      100% {
+        transform: rotateZ(-40deg);
+        
+      }
+
+    }
       @media screen and (max-width: 700px) {
         .logo {
           position: absolute;
@@ -208,6 +239,19 @@
           z-index: 1;
           font-weight: 500;
         }
+
+
+           .falling-img{
+        position: fixed;
+        height: 320px;
+        right: -70px;
+         transform: rotateZ(0deg);
+        bottom: 0px;
+        z-index: 1;
+        transition: all 1s;
+      }
+
+   
       }
     </style>
   </head>
@@ -247,7 +291,7 @@
     <p class="author">-Hermione Granger</p>
     <a class="new" type="button" href="https://www.instagram.com/direct/t/17842344680635758/" >Talk ?</a>
     <!-- <a target="_blank"><i class="fa-brands fa-square-instagram"></i> </a> -->
-
+ <div><img id="fall" class="falling-img" src="./image.png" alt="dumbledor"></div>
     <!-- harry potter script   -->
 
     <script>
