@@ -77,18 +77,32 @@ body {
 
 
 
-.tile > img {
+/* .tile > img {
 	height: 100%;
-    width: 100vw;
+   
 	aspect-ratio: 1;
 	position: absolute;
-	/* left: 0; */
+	left: 0;
 	top: 0;
 	object-fit: cover;
 	opacity: var(--opacity);
 	filter:blur(calc(--blur)* 10px));
 }
+ */
 
+	 .tile > img {
+	 height: 100%;
+		  width: 100vw;
+	 aspect-ratio: 1;
+	 position: absolute;
+/* 	 left: 0; */
+	 top: 0;
+	 object-fit: cover;
+	 opacity: var(--opacity, 0); /* default hidden */
+	 filter: blur(calc(var(--blur, 1) * 10px)); /* default full blur */
+	 transition: opacity 0.3s ease, filter 0.3s ease;
+	}
+	
 .message-box{
     position: absolute;
     top: 50%;
