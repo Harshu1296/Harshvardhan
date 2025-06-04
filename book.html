@@ -85,6 +85,25 @@
         z-index: 1;
       }
 
+       .page-img {
+          height: 200px;
+          width: 200px;
+          border-radius: 50%;
+          border: 3px solid #9f5b1f94;
+         
+
+          /* max-width: 300px; */
+          /* max-height: 300px; */
+          /* margin-bottom: 20px; */
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); */
+                              
+filter:  grayscale(50%) blur(1px) brightness(109%) contrast(115%) sepia(7%);
+-webkit-filter:  grayscale(50%) blur(0px) brightness(109%) contrast(115%) sepia(7%);
+
+          box-shadow: 12px 10px 10px rgba(67, 51, 24, 0.5);
+
+        }
+
       .cover {
         background: url("coverpage.jpg");
         background-position: center;
@@ -157,6 +176,35 @@
           height: 400px;
          
         }
+         .spell-name {
+        font-size: 22px;
+        color: #5a2a00;
+        font-weight: 600;
+      }
+
+      .spell-type {
+        font-size: 22px;
+        font-style: italic;
+        
+        margin: 10px 0;
+      }
+
+      .spell-effect {
+        font-size: 18px;
+      }
+
+        .page-img {
+          height: 50px;
+          width: 50px;
+          border-radius: 50%;
+         
+
+          /* max-width: 300px; */
+          /* max-height: 300px; */
+          /* margin-bottom: 20px; */
+          box-shadow: 12px 10px 10px rgba(67, 51, 24, 0.5);
+        }
+
 
         .nav {
           font-size: 30px;
@@ -215,41 +263,73 @@
 
 
     <script>
-      const spells = [
-        {  
+     const spells = [
+        {
           spell: "Alohomora",
           type: "Charm",
-          effect: "Opens locked doors and objects.</br> like you opened my heart door🚪 penguin 🐧.",
+          effect:
+            "Opens locked doors and objects.</br> like you opened my heart door🚪 penguin 🐧.",
+          image: "open.jpg",
         },
+        {
+          spell: "Wingardium Leviosa ",
+          type: "Lavitating Charm",
+          effect:
+            "Making things float is a standard magical power in any fantasy universe .",
+          image: "wingardiam.jpg",
+        },
+
         {
           spell: "Expelliarmus",
           type: "Charm",
-          effect: "Disarms the opponent. Umm' similar to your  mood swings 🙄 . ",
+          effect: "Disarms the opponent. Umm' similar to your mood swings 🙄 .",
+          image: "disarm.jpg",
         },
+        // ... other spells with image URLs
+
         {
           spell: "Expecto Patronum",
           type: "Charm",
-          effect: "Summons a protective Patronus.</br> Okie gonna use it to summon you 😃😌🙌🏻 in trouble .",
+          effect:
+            "Summons a protective Patronus.</br> Okie gonna use it to summon you 😃😌🙌🏻 in trouble .",
+          image: "patronus.jpg",
         },
         {
           spell: "Lumos",
           type: "Charm",
-          effect: "Creates light at the wand tip. </br> actually it is the wand i gave in previous page 🪄 🔮.",
+          effect:
+            "Creates light at the wand tip. </br> actually it is the wand i gave in previous page 🪄 🔮.",
+          image: "lumus.jpg",
         },
-        {  
+        {
           spell: "Avada Kedavra",
           type: "Curse",
-          effect: "Causes instant, painless death.</br> wtf it sounds like 'Kutte' word from you 😭🙏🏻.",
+          effect:
+            "Causes instant, painless death.</br> wtf it sounds like 'Kutte' word from you 😭🙏🏻.",
+          image: "adveta.jpg",
         },
+
         {
           spell: "Accio",
           type: "Charm",
-          effect: "Summons an object from a distance.</br> i'll Summon you 🫵🏻 till end of life , ready ?.",
+          effect:
+            "Summons an object from a distance.</br> i'll Summon you 🫵🏻 till end of life , ready ?.",
+          image: "Accio.jpg",
         },
-         {
+
+        {
+          spell: "Reparo",
+          type: "Mending charm",
+          effect:
+            "A spell used to mend broken things </br> Can we use Reparo ?.",
+          image: "reparo.jpg",
+        },
+        {
           spell: "<strong>  I Love U 🫶🏻</strong> ",
           type: "Charm",
-          effect: "The person sent you this Loves💖 u more than himself 🤍🫶🏻. </br> Love you Penguu 🪄🐧</br>(Tried my best here , hope u like it ) Bye !! .",
+          effect:
+            "The person sent you this Loves💖 u more than himself 🤍🫶🏻. </br> Love you Penguu 🪄🐧</br>(Tried my best here , hope u like it ) Bye !! .",
+          image: "Harry&H.jpg",
         },
       ];
 
@@ -270,11 +350,12 @@
         page.className = "page";
         page.style.zIndex = spells.length - index;
 
-        page.innerHTML = `
-        <div class="spell-name">${spell.spell}</div>
-        <div class="spell-type">${spell.type}</div>
-        <div class="spell-effect">${spell.effect}</div>
-      `;
+         page.innerHTML = `
+  <img class="page-img" src="${spell.image}" alt="${spell.spell}" style=";">
+  <div class="spell-name">${spell.spell}</div>
+  <div class="spell-type">${spell.type}</div>
+  <div class="spell-effect">${spell.effect}</div>
+`;
         book.appendChild(page);
       });
 
