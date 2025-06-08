@@ -86,6 +86,39 @@
         font-weight: 500;
       }
 
+      .pause {
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        z-index: 2;
+
+        transform: translate(-50%, -50%);
+
+        padding: 10px;
+        font-family: "Sacramento", cursive;
+        /* color: #3a741d; */
+        font-weight: 700;
+        text-wrap: wrap;
+        color: #19a148;
+        font-size: 25px;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 25px;
+        backdrop-filter: blur(12px);
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(222, 200, 200, 0.4);
+        /* overflow-y: auto; */
+
+        .click-icon {
+          /* background: #fff; */
+
+          padding: 2px;
+          height: 60px;
+          border-radius: 50%;
+          cursor: pointer;
+          transition: transform 0.2s ease;
+        }
+      }
+
       @media screen and (max-width: 700px) {
         .new {
           position: absolute;
@@ -110,14 +143,26 @@
     <img id="harry-potter" src="intro.png" />
     <img id="half-blood" src="halfblood.png" />
 
-     
-   
+    <div class="pause" style=" color: white;
+        font-size: 2em;
+        z-index: 9999;
+        display: non;" data-title=" click Me" onclick="togglePlay()">
+      <img class="click-icon" src="deathsymbol.png" alt="airpods-3" />
+      <div id="app"></div>
+    </div>
 
-    <audio id="intro-audio" preload="auto" loop=""
-       src="schoolofmagic.mp3" type="audio" autoplay=""  >
-
-   Your browser does not support the audio tag.
+    <audio
+    class="audio"
+      id="intro-audio"
+      preload="auto"
+      loop=""
+      src="schoolofmagic.mp3"
+      type="audio"
+      autoplay=""
+    >
+      your browser does'nt support this audio.
     </audio>
+
     <div
       id="click-to-start"
       style="
@@ -136,7 +181,7 @@
 
     <a class="new" type="button" href="harrypotter.html">Next ?</a>
   </body>
-  <script>
+  <!-- <script>
     const audio = document.getElementById("intro-audio");
 
     function tryToPlay() {
@@ -165,7 +210,27 @@
     }
 
     window.addEventListener("load", tryToPlay);
-  </script>
+  </script> -->
+
+
+ <!-- song script -->
+       <script>
+      var pause = document.querySelector(".pause");
+      var audio = document.querySelector(".audio");
+
+      function togglePlay() {
+        if (audio.paused) {
+          audio.play();
+          // <img width="40"  src="https://img.icons8.com/fluency/48/airpods-3.png" alt="airpods-3"/>
+          pause.innerHTML = "";
+          pause.style.color = " rgb(191, 191, 187)";
+        } else {
+          audio.pause();
+          pause.innerHTML = "";
+          pause.style.color = " rgb(191, 191, 187)";
+        }
+      }
+    </script>
 
   <script>
     // Smoke Class
