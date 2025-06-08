@@ -1,89 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Intro</title>
-<style>
-    body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
-    touch-action: none;
-    background: black;
-    color: white;
-    width: 100%;
-    min-height: 100vh;
-    overflow: hidden;
-    perspective: 100vmin;
-}
+    <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
 
-body::after {
-    content: "";
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    box-shadow: inset 0px 0px 400px rgba(0, 0, 0, 1),
-        inset 0px 0px 200px rgba(0, 0, 0, 1);
-}
-canvas {
-    width: 100%;
-    height: 100%;
-    touch-action: none;
-    position: absolute;
-    z-index: 1;
-}
+    <style>
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        touch-action: none;
+        background: black;
+        color: white;
+        width: 100%;
+        min-height: 100vh;
+        overflow: hidden;
+        perspective: 100vmin;
+        position: relative;
+      }
 
-@keyframes title {
-    0% {
-        transform: scale(0.3);
+      body::after {
+        content: "";
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        box-shadow: inset 0px 0px 400px rgba(0, 0, 0, 1),
+          inset 0px 0px 200px rgba(0, 0, 0, 1);
+      }
+      canvas {
+        width: 100%;
+        height: 100%;
+        touch-action: none;
+        position: absolute;
+        z-index: 1;
+      }
+
+      @keyframes title {
+        0% {
+          transform: scale(0.3);
+        }
+        100% {
+          transform: scale(4);
+        }
+      }
+      #harry-potter {
+        position: absolute;
+        z-index: 10;
+        width: 100%;
+        height: auto;
+        animation: title 30s 0s 1 forwards ease-in;
+        color: white;
+        mix-blend-mode: color-dodge;
+      }
+      #half-blood {
+        position: absolute;
+        z-index: 10;
+        width: 100%;
+        height: auto;
+        animation: title 42s 0s 1 forwards ease-in;
+        color: white;
+        mix-blend-mode: color-dodge;
+      }
+
+      .new {
+        position: absolute;
+        bottom: 15%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: "Pacifico", cursive;
+        border: none;
+        background-color: #b4662e;
+        padding: 8px 20px;
+        border-radius: 5px;
+        color: beige;
+        text-decoration: none;
+        /* color: rgb(191, 191, 187); */
+
+        z-index: 10;
+        font-weight: 500;
+      }
+
+      @media screen and (max-width: 700px) {
+        .new {
+          position: absolute;
+          bottom: 15%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-family: "Pacifico", cursive;
+          border: none;
+          background-color: #b86021c9;
+          padding: 8px 20px;
+          border-radius: 5px;
+          color: beige;
+          /* color: rgb(191, 191, 187); */
+
+          z-index: 12;
+          font-weight: 500;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <img id="harry-potter" src="intro.png" />
+    <img id="half-blood" src="halfblood.png" />
+
+    <audio id="intro-audio" preload="auto" loop="">
+      <source src="schoolofmagic.mp3" type="audio/mpeg" />
+      Your browser does not support the audio tag.
+    </audio>
+
+    <div
+      id="click-to-start"
+      style="
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 2em;
+        z-index: 9999;
+        display: none;
+      "
+    >
+      Click Anywhere to Start Audio
+    </div>
+
+    <a class="new" type="button" href="harrypotter.html">Next ?</a>
+  </body>
+  <script>
+    const audio = document.getElementById("intro-audio");
+
+    function tryToPlay() {
+      audio
+        .play()
+        .then(() => {
+          console.log("Audio autoplayed.");
+        })
+        .catch(() => {
+          console.warn("Autoplay blocked. Waiting for user interaction...");
+          const resume = () => {
+            audio
+              .play()
+              .then(() => {
+                console.log("Audio started after interaction.");
+              })
+              .catch((e) => console.error("Audio failed to play.", e));
+            document.removeEventListener("click", resume);
+            document.removeEventListener("keydown", resume);
+            document.removeEventListener("touchstart", resume);
+          };
+          document.addEventListener("click", resume);
+          document.addEventListener("keydown", resume);
+          document.addEventListener("touchstart", resume);
+        });
     }
-    100% {
-        transform: scale(4);
-    }
-}
-#harry-potter {
-    position: absolute;
-    z-index: 10;
-    width: 100%;
-    height: auto;
-    animation: title 30s 0s 1 forwards ease-in;
-    color: white;
-    mix-blend-mode: color-dodge;
-}
-#half-blood {
-    position: absolute;
-    z-index: 10;
-    width: 100%;
-    height: auto;
-    animation: title 42s 0s 1 forwards ease-in;
-    color: white;
-    mix-blend-mode: color-dodge;
-}
 
-</style>
+    window.addEventListener("load", tryToPlay);
+  </script>
 
-</head>
-<body>
-    
-    <img id="harry-potter" src="https://i.imgur.com/TtMPRtx.png">
-<img id="half-blood" src="https://i.imgur.com/EMW4uzf.png">
-
-
-</body>
-
-<script>
+  <script>
     // Smoke Class
-// By Marco Biedermann https://codepen.io/marcobiedermann/pen/jympXQ
-class Smoke {
-    constructor(options) {
+    // By Marco Biedermann https://codepen.io/marcobiedermann/pen/jympXQ
+    class Smoke {
+      constructor(options) {
         const defaults = {
-            width: window.innerWidth,
-            height: window.innerHeight
+          width: window.innerWidth,
+          height: window.innerHeight,
         };
 
         Object.assign(this, options, defaults);
@@ -91,9 +179,9 @@ class Smoke {
 
         this.addEventListeners();
         this.init();
-    }
+      }
 
-    init() {
+      init() {
         const { width, height } = this;
 
         this.clock = new THREE.Clock();
@@ -106,8 +194,8 @@ class Smoke {
 
         const meshGeometry = new THREE.BufferGeometry(200, 200, 200);
         const meshMaterial = new THREE.MeshLambertMaterial({
-            color: 0xaa6666,
-            wireframe: false
+          color: 0xaa6666,
+          wireframe: false,
         });
         this.mesh = new THREE.Mesh(meshGeometry, meshMaterial);
 
@@ -116,101 +204,95 @@ class Smoke {
         this.addCamera();
         this.addLights();
         this.addParticles();
-        // this.addBackground();
+        //this.addBackground();
 
         document.body.appendChild(renderer.domElement);
-    }
+      }
 
-    evolveSmoke(delta) {
+      evolveSmoke(delta) {
         const { smokeParticles } = this;
 
         let smokeParticlesLength = smokeParticles.length;
 
         while (smokeParticlesLength--) {
-            smokeParticles[smokeParticlesLength].rotation.z += delta * 0.2;
+          smokeParticles[smokeParticlesLength].rotation.z += delta * 0.2;
         }
-    }
+      }
 
-    addLights() {
+      addLights() {
         const { scene } = this;
         const light = new THREE.DirectionalLight(0xffffff, 0.75);
 
         light.position.set(-1, 0, 1);
         scene.add(light);
-    }
+      }
 
-    addCamera() {
+      addCamera() {
         const { scene } = this;
         const camera = (this.camera = new THREE.PerspectiveCamera(
-            75,
-            this.width / this.height,
-            1,
-            10000
+          75,
+          this.width / this.height,
+          1,
+          10000
         ));
 
         camera.position.z = 1000;
         scene.add(camera);
-    }
+      }
 
-    addParticles() {
+      addParticles() {
         const { scene } = this;
         const textureLoader = new THREE.TextureLoader();
         const smokeParticles = (this.smokeParticles = []);
 
-        textureLoader.load(
-            "https://raw.githubusercontent.com/marcobiedermann/playground/master/three.js/smoke-particles/dist/assets/images/clouds.png",
-            (texture) => {
-                const smokeMaterial = new THREE.MeshLambertMaterial({
-                    color: 0xffffff,
-                    map: texture,
-                    transparent: true
-                });
-                smokeMaterial.map.minFilter = THREE.LinearFilter;
-                const smokeGeometry = new THREE.PlaneBufferGeometry(300, 300);
+        textureLoader.load("cloud.png", (texture) => {
+          const smokeMaterial = new THREE.MeshLambertMaterial({
+            color: 0xfffff,
+            map: texture,
+            transparent: true,
+          });
+          smokeMaterial.map.minFilter = THREE.LinearFilter;
+          const smokeGeometry = new THREE.PlaneBufferGeometry(300, 300);
 
-                const smokeMeshes = [];
-                let limit = 150;
+          const smokeMeshes = [];
+          let limit = 150;
 
-                while (limit--) {
-                    smokeMeshes[limit] = new THREE.Mesh(
-                        smokeGeometry,
-                        smokeMaterial
-                    );
-                    smokeMeshes[limit].position.set(
-                        Math.random() * 500 - 250,
-                        Math.random() * 500 - 250,
-                        Math.random() * 1000 - 100
-                    );
-                    smokeMeshes[limit].rotation.z = Math.random() * 360;
-                    smokeParticles.push(smokeMeshes[limit]);
-                    scene.add(smokeMeshes[limit]);
-                }
-            }
-        );
-    }
+          while (limit--) {
+            smokeMeshes[limit] = new THREE.Mesh(smokeGeometry, smokeMaterial);
+            smokeMeshes[limit].position.set(
+              Math.random() * 500 - 250,
+              Math.random() * 500 - 250,
+              Math.random() * 1000 - 100
+            );
+            smokeMeshes[limit].rotation.z = Math.random() * 360;
+            smokeParticles.push(smokeMeshes[limit]);
+            scene.add(smokeMeshes[limit]);
+          }
+        });
+      }
 
-    addBackground() {
+      addBackground() {
         const { scene } = this;
         const textureLoader = new THREE.TextureLoader();
         const textGeometry = new THREE.PlaneBufferGeometry(600, 320);
 
         textureLoader.load("harry-potter-bg.png", (texture) => {
-            const textMaterial = new THREE.MeshLambertMaterial({
-                blending: THREE.AdditiveBlending,
-                color: 0xffffff,
-                map: texture,
-                opacity: 1,
-                transparent: true
-            });
-            textMaterial.map.minFilter = THREE.LinearFilter;
-            const text = new THREE.Mesh(textGeometry, textMaterial);
+          const textMaterial = new THREE.MeshLambertMaterial({
+            blending: THREE.AdditiveBlending,
+            color: 0xffffff,
+            map: texture,
+            opacity: 1,
+            transparent: true,
+          });
+          textMaterial.map.minFilter = THREE.LinearFilter;
+          const text = new THREE.Mesh(textGeometry, textMaterial);
 
-            text.position.z = 800;
-            scene.add(text);
+          text.position.z = 800;
+          scene.add(text);
         });
-    }
+      }
 
-    render() {
+      render() {
         const { mesh } = this;
         let { cubeSineDriver } = this;
 
@@ -221,16 +303,16 @@ class Smoke {
         mesh.position.z = 100 + Math.sin(cubeSineDriver) * 500;
 
         this.renderer.render(this.scene, this.camera);
-    }
+      }
 
-    update() {
+      update() {
         this.evolveSmoke(this.clock.getDelta());
         this.render();
 
         requestAnimationFrame(this.update.bind(this));
-    }
+      }
 
-    onResize() {
+      onResize() {
         const { camera } = this;
 
         const windowWidth = window.innerWidth;
@@ -240,14 +322,13 @@ class Smoke {
         camera.updateProjectionMatrix();
 
         this.renderer.setSize(windowWidth, windowHeight);
-    }
+      }
 
-    addEventListeners() {
+      addEventListeners() {
         window.addEventListener("resize", this.onResize);
+      }
     }
-}
-const smoke = new Smoke();
-smoke.update();
-
-</script>
+    const smoke = new Smoke();
+    smoke.update();
+  </script>
 </html>
