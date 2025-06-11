@@ -12,6 +12,12 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
+	<!-- Intro.js CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/intro.js/minified/introjs.min.css"
+    />
+
     <style>
       * {
         box-sizing: border-box;
@@ -164,6 +170,61 @@ filter:  grayscale(50%) blur(1px) brightness(109%) contrast(115%) sepia(7%);
         background-color: #8b4513;
       }
 
+	  .introjs-tooltip {
+        background-color: transparent;
+        border: 2px solid rgba(12, 135, 121, 0.47);
+        color: #f5f5dc;
+        font-family: "Almendra SC", cursive !important;
+
+        border-radius: 16px;
+        backdrop-filter: blur(4px);
+        box-shadow: 0 0 15px rgba(11, 179, 159, 0.607);
+      }
+
+      .introjs-tooltip-title {
+        color: #f9d923;
+        font-size: 22px;
+      }
+
+      .introjs-tooltiptext {
+        color: #dadada;
+        font-size: 16px;
+        line-height: 1.2;
+      }
+
+      .introjs-helperLayer,
+      .introjs-tooltipReferenceLayer {
+        z-index: 99999 !important; /* Ensure they're not hidden */
+      }
+
+      .introjs-overlay {
+        background: rgba(25, 168, 168, 0.6) !important;
+        z-index: 99998 !important;
+      }
+
+      .introjs-donebutton,
+      .introjs-nextbutton,
+      .introjs-prevbutton {
+        color: white;
+        font-family: "Almendra SC", serif;
+        font-size: 16px;
+        transition: all 0.5s;
+        /* From https://css.glass */
+        background: rgba(102, 161, 152, 0.47);
+        border-radius: 16px;
+        box-shadow: 0 1px 40px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border: 1px solid rgba(102, 161, 152, 0.93);
+      }
+
+      .introjs-donebutton:hover {
+            background-color: rgba(162, 171, 170, 0.47);
+
+
+        color: rgba(102, 161, 152, 0.47);
+      }
+
       @media screen and (max-width:700px) {
         .book-container {
           /* width: 500px; */
@@ -282,7 +343,38 @@ filter:  grayscale(50%) blur(1px) brightness(109%) contrast(115%) sepia(7%);
       "
     >
       Click Anywhere to Start Audio
-    </div>
+ </div>
+
+
+<!-- Intro.js Script -->
+  <script src="https://cdn.jsdelivr.net/npm/intro.js/minified/intro.min.js"></script>
+  <script>
+    introJs()
+      .setOptions({
+        steps: [
+          {
+            element: ".click-icon",
+            intro:
+              "Now <strong> Spell book 📖is your's</strong> 🧙🏼‍♂️ ,</br>  Learn to  Defeat <strong>Harsh !</strong> 🪄.",
+          },
+		   {
+            element: ".next",
+            intro:
+              "  Click this<strong> Symbol</strong> to turn the<strong> pages📄 </strong> </br> enjoy the magic! 🪄.",
+          },
+        //   {
+        //     element: ".new",
+        //     intro: "That's it for now<strong> Janhvi </strong>!</br>you did <strong>well all the tasks </strong>🧙🏼‍♂️</br><strong> Hogwarts </strong>will remember you for your intelligence.",
+        //   },
+        ],
+        showProgress: false,
+        showBullets: false,
+        nextLabel: "Next →",
+        prevLabel: "← Back",
+        doneLabel: "Done ✨",
+      })
+      .start();
+  </script>
 
 
 
