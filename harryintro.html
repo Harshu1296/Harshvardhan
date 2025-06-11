@@ -4,7 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Intro</title>
+    <link rel="shortcut icon"  class="favicon" href="harry1.png" type="image/x-icon">
+       <!-- Intro.js CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/intro.js/minified/introjs.min.css"
+    />
+
     <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
+    
 
     <style>
       body {
@@ -119,6 +127,63 @@
         }
       }
 
+/*       into js  css */
+ .introjs-tooltip {
+        background-color: transparent;
+        border: 2px solid rgba(12, 135, 121, 0.47);
+        color: #f5f5dc;
+        font-family: "Almendra SC", cursive !important;
+
+        border-radius: 16px;
+        backdrop-filter: blur(4px);
+        box-shadow: 0 0 15px rgba(11, 179, 159, 0.607);
+      }
+
+      .introjs-tooltip-title {
+        color: #f9d923;
+        font-size: 22px;
+      }
+
+      .introjs-tooltiptext {
+        color: #dadada;
+        font-size: 16px;
+        line-height: 1.2;
+      }
+
+      .introjs-helperLayer,
+      .introjs-tooltipReferenceLayer {
+        z-index: 99999 !important; /* Ensure they're not hidden */
+      }
+
+      .introjs-overlay {
+        background: rgba(25, 168, 168, 0.6) !important;
+        z-index: 99998 !important;
+      }
+
+      .introjs-donebutton,
+      .introjs-nextbutton,
+      .introjs-prevbutton {
+        color: white;
+        font-family: "Almendra SC", serif;
+        font-size: 16px;
+        transition: all 0.5s;
+        /* From https://css.glass */
+        background: rgba(102, 161, 152, 0.47);
+        border-radius: 16px;
+        box-shadow: 0 1px 40px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border: 1px solid rgba(102, 161, 152, 0.93);
+      }
+
+      .introjs-donebutton:hover {
+            background-color: rgba(186, 194, 193, 0.47);
+
+
+        color: rgba(102, 161, 152, 0.47);
+      }
+/*       closed here  */
+
       @media screen and (max-width: 700px) {
         .new {
           position: absolute;
@@ -173,47 +238,42 @@
         color: white;
         font-size: 2em;
         z-index: 9999;
-        display: none;
+/*         display: none; */
       "
     >
-      Click Anywhere to Start Audio
+      
     </div>
 
     <a class="new" type="button" href="harrypotter.html">Next ?</a>
   </body>
-  <!-- <script>
-    const audio = document.getElementById("intro-audio");
-
-    function tryToPlay() {
-      audio
-        .play()
-        .then(() => {
-          console.log("Audio autoplayed.");
-        })
-        .catch(() => {
-          console.warn("Autoplay blocked. Waiting for user interaction...");
-          const resume = () => {
-            audio
-              .play()
-              .then(() => {
-                console.log("Audio started after interaction.");
-              })
-              .catch((e) => console.error("Audio failed to play.", e));
-            document.removeEventListener("click", resume);
-            document.removeEventListener("keydown", resume);
-            document.removeEventListener("touchstart", resume);
-          };
-          document.addEventListener("click", resume);
-          document.addEventListener("keydown", resume);
-          document.addEventListener("touchstart", resume);
-        });
-    }
-
-    window.addEventListener("load", tryToPlay);
-  </script> -->
 
 
- <!-- song script -->
+   <!-- Intro.js Script -->
+  <script src="https://cdn.jsdelivr.net/npm/intro.js/minified/intro.min.js"></script>
+  <script>
+    introJs()
+      .setOptions({
+        steps: [
+          {
+            element: ".click-icon",
+            intro:
+              " Madamji 🎀,</br> Click above Symbol after Done button to start the  magic! 🪄.",
+          },
+          {
+            element: ".new",
+            intro: "Press Next for new journey 🛣️🧙🏼‍♂️.",
+          },
+        ],
+        showProgress: false,
+        showBullets: false,
+        nextLabel: "Next →",
+        prevLabel: "← Back",
+        doneLabel: "Done ✨",
+      })
+      .start();
+  </script>
+
+<!--   closed  -->
        <script>
       var pause = document.querySelector(".pause");
       var audio = document.querySelector(".audio");
