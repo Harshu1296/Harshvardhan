@@ -162,6 +162,21 @@
       transition: transform 1s ease; /* optional smoothness */
     }
 
+      
+        .owl-img{
+          height: 150px;
+        position: fixed;
+        top: 60px;
+        /* display: none; */
+        visibility: hidden;
+        z-index:0;
+        left: 20px;
+        
+      }
+
+
+      
+
     @keyframes rotateEveryMinute {
       0% {
         transform: rotateZ(0deg);
@@ -176,6 +191,25 @@
       }
 
     }
+
+
+       @media screen and (max-width:500px ) {
+
+  
+         .owl-img{
+          height: 110px;
+        position: fixed;
+        /* display:content; */
+        visibility: visible;
+        top: 220px;
+        z-index:0;
+        left: 20px;
+        
+      }
+  
+ }
+
+      
       @media screen and (max-width: 700px) {
         .logo {
           position: absolute;
@@ -294,6 +328,9 @@
     <a class="new" type="button" href="magicwand.html" > Magic🪄🔮?</a>
     <!-- <a target="_blank"><i class="fa-brands fa-square-instagram"></i> </a> -->
  <div><img title="Dumble Dor 🧙🏼‍♂️" id="fall" class="falling-img" src="./image.png" alt="dumbledor"></div>
+
+     <div><img title="Snowy owl "  class="owl-img" src="owl.png" alt="Snowy sleepy owl"></div>
+
     <!-- harry potter script   -->
 
     <script>
