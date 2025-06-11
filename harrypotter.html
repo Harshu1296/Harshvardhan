@@ -12,6 +12,12 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+
+     <!-- Intro.js CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/intro.js/minified/introjs.min.css"
+    />
     <style>
       * {
         padding: 0;
@@ -172,6 +178,61 @@
         z-index:0;
         left: 20px;
         
+      }
+
+      .introjs-tooltip {
+        background-color: transparent;
+        border: 2px solid rgba(12, 135, 121, 0.47);
+        color: #f5f5dc;
+        font-family: "Almendra SC", cursive !important;
+
+        border-radius: 16px;
+        backdrop-filter: blur(4px);
+        box-shadow: 0 0 15px rgba(11, 179, 159, 0.607);
+      }
+
+      .introjs-tooltip-title {
+        color: #f9d923;
+        font-size: 22px;
+      }
+
+      .introjs-tooltiptext {
+        color: #dadada;
+        font-size: 16px;
+        line-height: 1.2;
+      }
+
+      .introjs-helperLayer,
+      .introjs-tooltipReferenceLayer {
+        z-index: 99999 !important; /* Ensure they're not hidden */
+      }
+
+      .introjs-overlay {
+        background: rgba(25, 168, 168, 0.6) !important;
+        z-index: 99998 !important;
+      }
+
+      .introjs-donebutton,
+      .introjs-nextbutton,
+      .introjs-prevbutton {
+        color: white;
+        font-family: "Almendra SC", serif;
+        font-size: 16px;
+        transition: all 0.5s;
+        /* From https://css.glass */
+        background: rgba(102, 161, 152, 0.47);
+        border-radius: 16px;
+        box-shadow: 0 1px 40px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border: 1px solid rgba(102, 161, 152, 0.93);
+      }
+
+      .introjs-donebutton:hover {
+            background-color: rgba(162, 171, 170, 0.47);
+
+
+        color: rgba(102, 161, 152, 0.47);
       }
 
 
@@ -356,6 +417,35 @@
       });
     </script>
 
+    <!-- Intro.js Script -->
+  <script src="https://cdn.jsdelivr.net/npm/intro.js/minified/intro.min.js"></script>
+  <script>
+    introJs()
+      .setOptions({
+        steps: [
+          {
+            element: ".owl-img",
+            intro:
+              " <strong>Hii Janhvi</strong>🦉 ,</br> My name is <strong>Snowy.</strong>",
+          },
+          {
+            element: ".falling-img",
+            intro: " <strong>Welcome</strong> to <strong>Hogwarts🏰 Janhvi </strong> </br>I'm your professor  <strong>  Dumble Dor </strong>! 🧙🏼‍♂️.",
+          },
+{
+            element: ".new",
+            intro: " <strong>Come with me 🧙🏼‍♂️🫴🏼 </strong></br><strong>Let me Guide you 🏰 Janhvi </strong>.",
+          },
+        ],
+        showProgress: false,
+        showBullets: false,
+        nextLabel: "Next →",
+        prevLabel: "← Back",
+        doneLabel: "Done ✨",
+      })
+      .start();
+  </script>
+
     <!-- song script -->
        <script>
       var pause = document.querySelector(".pause");
@@ -376,3 +466,6 @@
     </script>
   </body>
 </html>
+<!-- 
+
+ -->
